@@ -20,9 +20,20 @@ body{
 }
 .hehe{
     font-family: 'Times New Roman', Times, serif;
-    color:blue
+    color:blue  
 }
 .hihi{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color:blueviolet
+}
+
+.nu{
+    text-align: left;
+    width: 170px;
+    background-color: blueviolet;
+    padding: 50;
+}
+.meme{
+    border: 2px solid red;
+    background-color: aqua;
 }
