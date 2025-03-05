@@ -1,0 +1,28 @@
+h1{
+        font-size: 20px;
+        
+}
+h2{
+    color:black
+}
+h3{
+    font-size: 20px;
+    color:black
+}
+body{
+    border:3px solid black ;
+}
+.haha{
+    background-color: rgb(124, 124, 56);
+}
+.huhu{
+    color:red
+}
+.hehe{
+    font-family: 'Times New Roman', Times, serif;
+    color:blue
+}
+.hihi{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color:blueviolet
+}
