@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Web Đơn Giản</title>
+    <script>
+        
+        function guiDuLieu() {
+            var textboxValue = document.getElementById('textbox').value;  
+            if (textboxValue) {
+                alert('Dữ liệu đã gửi: ' + textboxValue);  
+            } else {
+                alert('Vui lòng nhập dữ liệu trước khi gửi!');  
+            }
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <input type="text" id="textbox" placeholder="Nhập thông tin tại đây">
+        <button type="button" value="Gửi" onclick="guiDuLieu()">Gửi</button>
+    </form>
+</body>
+</html>
