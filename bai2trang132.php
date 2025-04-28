@@ -1,7 +1,4 @@
-<?php
-// db.php - nếu cần kết nối sau này
-// include 'db.php';
-?>
+
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -9,111 +6,164 @@
     <meta charset="UTF-8">
     <title>Trường Đại học Bạc Liêu - Quản lý nhân sự</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f9ff;
-            color: #333;
-        }
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color:rgb(150, 187, 228);
-            color: white;
-            padding: 10px 20px;
-        }
-        .header img {
-            height: 70px;
-        }
-        .header .info {
-            flex-grow: 1;
-            margin-left: 20px;
-        }
-        .header .info h1 {
-            margin: 0;
-            font-size: 28px;
-        }
-        .header .info p {
-            margin: 2px 0 0;
-            font-size: 16px;
-        }
-        .header .title-right {
-            font-weight: bold;
-            font-size: 18px;
-        }
-        .container {
-            display: flex;
-            min-height: calc(100vh - 100px);
-        }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f0f4f8;
+        color: #333;
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: linear-gradient(90deg, rgb(132, 202, 248), rgb(135, 218, 236));
+        padding: 20px 40px;
+        color: #fff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    .header img {
+        height: 70px;
+        border-radius: 8px;
+    }
+    .header .info {
+        flex: 1;
+        margin-left: 20px;
+    }
+    .header .info h1 {
+        font-size: 32px;
+        margin-bottom: 5px;
+    }
+    .header .info p {
+        font-size: 16px;
+        opacity: 0.9;
+    }
+    .header .title-right {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .main {
+        display: flex;
+        flex: 1;
+        margin-top: 20px;
+    }
+    .sidebar {
+        position: fixed;
+        top: 120px; /* chiều cao header + khoảng cách */
+        left: 30px;
+        width: 260px;
+        height: calc(100vh - 140px); /* Chiều cao trừ header */
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        overflow-y: auto;
+    }
+    .sidebar h3 {
+        color: rgb(100, 190, 226);
+        font-size: 18px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        border-bottom: 2px solid #e0e0e0;
+        padding-bottom: 5px;
+    }
+    .sidebar a {
+        display: block;
+        color: #333;
+        text-decoration: none;
+        margin: 8px 0;
+        padding: 8px 12px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        font-size: 15px;
+    }
+    .sidebar a:hover {
+        background: #e6f2ff;
+        color: rgb(119, 182, 226);
+        padding-left: 20px;
+    }
+    .content {
+        flex: 1;
+        margin-left: 320px; /* đẩy qua phải, cách sidebar */
+        margin-right: 30px;
+        margin-bottom: 20px;
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+    .content h2 {
+        color: rgb(121, 211, 238);
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+    .content h3 {
+        color: rgb(114, 199, 238);
+        font-size: 22px;
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+    .content p, .content ul {
+        font-size: 16px;
+        margin: 10px 0;
+    }
+    .content ul {
+        padding-left: 20px;
+        list-style-type: disc;
+    }
+    .content img {
+        width: 100%;
+        max-width: 600px;
+        display: block;
+        margin: 20px auto;
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+    .footer {
+        background: rgb(105, 182, 226);
+        color: white;
+        text-align: center;
+        padding: 18px;
+        font-size: 14px;
+        margin-top: auto;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+    }
+
+    /* Responsive cho mobile */
+    @media (max-width: 768px) {
         .sidebar {
-            width: 250px;
-            background-color: #e0ecff;
-            padding: 20px;
-            border-right: 1px solid #ccc;
-        }
-        .sidebar h3 {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #0056b3;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 5px;
-        }
-        .sidebar a {
-            display: block;
-            margin: 10px 0;
-            text-decoration: none;
-            color: #333;
-            font-size: 15px;
-            padding: 5px 10px;
-            border-radius: 4px;
-        }
-        .sidebar a:hover {
-            background-color: #cce0ff;
-            color: #0056b3;
+            position: relative;
+            width: 100%;
+            height: auto;
+            top: 0;
+            left: 0;
+            margin-bottom: 20px;
         }
         .content {
-            flex: 1;
-            padding: 30px;
-            background-color: white;
+            margin: 0 20px;
         }
-        .content h2 {
-            font-size: 24px;
-            color: #0056b3;
-            margin-bottom: 15px;
+        .main {
+            flex-direction: column;
+            padding: 20px;
         }
-        .content h3 {
-            font-size: 20px;
-            color: #0077cc;
-            margin-top: 20px;
-        }
-        .content p {
-            margin: 10px 0;
-            line-height: 1.6;
-        }
-        .content img {
-            width: 100%;
-            max-width: 500px;
-            margin: 20px 0;
-            display: block;
-        }
-        .footer {
-            background-color: #0056b3;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            font-size: 14px;
-        }
-    </style>
+    }
+</style>
+
+
 </head>
 <body>
 
 <div class="header">
-    <img src="banner.png" alt="Logo">
+    <img src="2.png" alt="Logo">
     <div class="info">
         <h1>TRƯỜNG ĐẠI HỌC BẠC LIÊU</h1>
         <p>BAC LIEU UNIVERSITY</p>
